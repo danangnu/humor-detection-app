@@ -1,0 +1,64 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Hugging Face / ML caches
+.cache/
+huggingface/
+hf_cache/
+
+# Trained models
+models/*
+!models/.gitkeep
+
+# Training output/checkpoints
+training/runs/
+training/checkpoint-*/
+checkpoint-*/
+
+# Downloaded / generated datasets
+data/processed/*
+!data/processed/.gitkeep
+
+# Frozen OOD data - do not publish raw Reddit samples
+data/ood/*.csv
+data/ood/*.json
+!data/ood/OOD_PROTOCOL.md
+
+# Logs
+*.log
+logs/
+
+# Build output
+build/
+dist/
+*.spec
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+~$*
