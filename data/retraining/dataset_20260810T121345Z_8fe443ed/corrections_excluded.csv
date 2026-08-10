@@ -1,0 +1,2 @@
+correction_id,text,original_label,original_score,corrected_label,source,model_source,created_at,updated_at,training_label,exclusion_reason
+1,"You only live once, but if you do it right, once is enough.",Not Humorous,0.00152,Ambiguous / Uncertain,analyze,local-trained-model,2026-08-10T12:12:24+00:00,2026-08-10T12:13:30+00:00,,ambiguous_not_a_binary_training_label

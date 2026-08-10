@@ -1,0 +1,268 @@
+
+/* Humor Bot Milestone 2.3 admin additions */
+
+.model-admin-card,
+.corrections-section {
+    margin-top: 20px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(11, 16, 32, .46);
+    padding: 18px;
+}
+
+.model-card-heading,
+.section-heading {
+    display: flex;
+    gap: 18px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.model-card-heading h2,
+.section-heading h2 {
+    margin: 4px 0 5px;
+    font-size: 21px;
+}
+
+.model-card-heading p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 780px;
+}
+
+.model-status-grid {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.model-status-grid > div {
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel2);
+}
+
+.model-status-grid small {
+    display: block;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.state-pass {
+    color: #86efac;
+}
+
+.state-error {
+    color: #fca5a5;
+}
+
+.state-warn {
+    color: #fde68a;
+}
+
+.model-note {
+    color: var(--muted);
+    line-height: 1.45;
+    font-size: 13px;
+}
+
+.training-config {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.training-config span {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 9px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.training-config strong {
+    color: var(--text);
+}
+
+.metric-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(5, minmax(160px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.metric-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel2);
+    padding: 12px;
+}
+
+.metric-card > small {
+    display: block;
+    color: #ddd6fe;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.metric-values {
+    display: grid;
+    gap: 5px;
+}
+
+.metric-values span {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.metric-values strong {
+    color: var(--text);
+}
+
+.metrics-empty {
+    margin-top: 14px;
+    padding: 18px;
+    border: 1px dashed var(--line);
+    border-radius: 12px;
+    color: var(--muted);
+}
+
+.retention-box {
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel2);
+    padding: 13px;
+    display: grid;
+    grid-template-columns:
+        1fr auto;
+    gap: 6px 18px;
+}
+
+.retention-box span {
+    color: var(--muted);
+}
+
+.retention-box strong {
+    font-size: 20px;
+}
+
+.retention-box small {
+    grid-column: 1 / -1;
+    color: var(--muted);
+}
+
+.gate-checks {
+    margin-top: 14px;
+}
+
+.gate-checks h3 {
+    font-size: 14px;
+    margin: 0 0 9px;
+}
+
+#gate-check-list {
+    display: grid;
+    gap: 7px;
+}
+
+.gate-check {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gate-check strong {
+    font-size: 11px;
+    min-width: 38px;
+}
+
+.gate-check.pass strong {
+    color: #86efac;
+}
+
+.gate-check.fail strong {
+    color: #fca5a5;
+}
+
+.gate-check span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.model-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.admin-button.promote {
+    background: #166534;
+    border-color: #15803d;
+    color: #dcfce7;
+}
+
+.danger-zone {
+    border-color: #4c3340;
+}
+
+.history-list {
+    display: grid;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.history-item {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: grid;
+    gap: 4px;
+}
+
+.history-item span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.admin-row-actions {
+    display: flex;
+    gap: 7px;
+}
+
+@media (max-width: 1200px) {
+    .metric-grid {
+        grid-template-columns:
+            repeat(2, minmax(160px, 1fr));
+    }
+
+    .model-status-grid {
+        grid-template-columns:
+            repeat(2, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .model-card-heading,
+    .section-heading {
+        flex-direction: column;
+    }
+
+    .metric-grid,
+    .model-status-grid {
+        grid-template-columns: 1fr;
+    }
+}

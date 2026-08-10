@@ -1,0 +1,2 @@
+correction_id,text,original_label,original_score,corrected_label,source,model_source,created_at,updated_at,training_label,exclusion_reason
+2,"Outside of a dog, a book is man's best friend. Inside of a dog it's too dark to read.",Humorous,0.998977,Not Humorous,analyze,local-trained-model,2026-08-10T12:17:19+00:00,2026-08-10T12:17:30+00:00,0,

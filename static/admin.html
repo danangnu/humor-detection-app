@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Humor Bot — Administration</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/admin_m2_3.css"
+    >
+</head>
+
+<body class="admin-page">
+
+<main class="admin-shell">
+
+    <header class="admin-header">
+
+        <div class="logo">
+            HB
+        </div>
+
+        <div>
+            <span class="eyebrow">
+                Milestone 2.3
+            </span>
+
+            <h1>
+                Humor Bot Administration
+            </h1>
+
+            <p>
+                Review corrections, train candidate models,
+                promote passing candidates and roll back safely.
+            </p>
+        </div>
+
+        <a
+            class="admin-home-link"
+            href="/"
+        >
+            Back to Humor Bot
+        </a>
+
+    </header>
+
+
+    <section class="admin-content">
+
+        <!-- ------------------------------------------------
+             Corrections summary
+        ------------------------------------------------- -->
+
+        <div class="admin-stats">
+
+            <div class="admin-stat">
+                <small>
+                    Total corrections
+                </small>
+
+                <strong id="stat-total">
+                    0
+                </strong>
+            </div>
+
+            <div class="admin-stat">
+                <small>
+                    Pending
+                </small>
+
+                <strong id="stat-pending">
+                    0
+                </strong>
+            </div>
+
+            <div class="admin-stat">
+                <small>
+                    Approved
+                </small>
+
+                <strong id="stat-approved">
+                    0
+                </strong>
+            </div>
+
+            <div class="admin-stat">
+                <small>
+                    Rejected
+                </small>
+
+                <strong id="stat-rejected">
+                    0
+                </strong>
+            </div>
+
+        </div>
+
+
+        <!-- ------------------------------------------------
+             Candidate training
+        ------------------------------------------------- -->
+
+        <section class="model-admin-card">
+
+            <div class="model-card-heading">
+
+                <div>
+                    <span class="eyebrow">
+                        Controlled retraining
+                    </span>
+
+                    <h2>
+                        Candidate Transformer
+                    </h2>
+
+                    <p>
+                        Approved binary corrections are added
+                        to a frozen dataset snapshot. The
+                        candidate trains separately from the
+                        active model.
+                    </p>
+                </div>
+
+                <button
+                    id="retrain-btn"
+                    class="admin-button primary"
+                    type="button"
+                >
+                    Train Candidate
+                </button>
+
+            </div>
+
+            <div class="model-status-grid">
+
+                <div>
+                    <small>
+                        Training state
+                    </small>
+
+                    <strong id="training-state">
+                        Loading…
+                    </strong>
+                </div>
+
+                <div>
+                    <small>
+                        Candidate gate
+                    </small>
+
+                    <strong id="candidate-gate">
+                        Loading…
+                    </strong>
+                </div>
+
+                <div>
+                    <small>
+                        Active model
+                    </small>
+
+                    <strong id="active-model">
+                        Loading…
+                    </strong>
+                </div>
+
+                <div>
+                    <small>
+                        Rollback
+                    </small>
+
+                    <strong id="rollback-state">
+                        Loading…
+                    </strong>
+                </div>
+
+            </div>
+
+            <p
+                id="training-message"
+                class="model-note"
+            ></p>
+
+            <div
+                id="training-config"
+                class="training-config"
+            ></div>
+
+        </section>
+
+
+        <!-- ------------------------------------------------
+             Metrics
+        ------------------------------------------------- -->
+
+        <section class="model-admin-card">
+
+            <div class="model-card-heading">
+
+                <div>
+                    <span class="eyebrow">
+                        Candidate review
+                    </span>
+
+                    <h2>
+                        Validation Metrics
+                    </h2>
+
+                    <p>
+                        Promotion is based on validation
+                        performance plus approved-correction
+                        retention. Routine admin retraining
+                        does not inspect the held-out test set.
+                    </p>
+                </div>
+
+            </div>
+
+            <div
+                id="metrics-empty"
+                class="metrics-empty"
+            >
+                No candidate evaluation is available yet.
+            </div>
+
+            <div
+                id="metrics-panel"
+                class="hidden"
+            >
+
+                <div
+                    id="metrics-grid"
+                    class="metric-grid"
+                ></div>
+
+                <div class="retention-box">
+
+                    <span>
+                        Approved correction retention
+                    </span>
+
+                    <strong id="retention-value">
+                        —
+                    </strong>
+
+                    <small id="retention-detail">
+                    </small>
+
+                </div>
+
+                <div class="gate-checks">
+
+                    <h3>
+                        Promotion gate checks
+                    </h3>
+
+                    <div id="gate-check-list">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ------------------------------------------------
+             Promotion controls
+        ------------------------------------------------- -->
+
+        <section class="model-admin-card danger-zone">
+
+            <div class="model-card-heading">
+
+                <div>
+                    <span class="eyebrow">
+                        Model controls
+                    </span>
+
+                    <h2>
+                        Promotion & Rollback
+                    </h2>
+
+                    <p>
+                        Promotion always backs up the current
+                        active model first. Promotion and
+                        rollback require an application restart.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="model-actions">
+
+                <button
+                    id="promote-btn"
+                    class="admin-button promote"
+                    type="button"
+                    disabled
+                >
+                    Promote Candidate
+                </button>
+
+                <button
+                    id="rollback-btn"
+                    class="admin-button danger"
+                    type="button"
+                    disabled
+                >
+                    Roll Back Previous Model
+                </button>
+
+            </div>
+
+            <p class="model-note">
+                No candidate is promoted automatically after
+                training. A passing gate only makes it eligible.
+            </p>
+
+        </section>
+
+
+        <!-- ------------------------------------------------
+             Corrections
+        ------------------------------------------------- -->
+
+        <section class="corrections-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">
+                        Feedback
+                    </span>
+
+                    <h2>
+                        Correction Review
+                    </h2>
+                </div>
+
+                <div class="admin-toolbar">
+
+                    <label for="status-filter">
+                        Show
+                    </label>
+
+                    <select id="status-filter">
+
+                        <option value="">
+                            All
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="approved">
+                            Approved
+                        </option>
+
+                        <option value="rejected">
+                            Rejected
+                        </option>
+
+                    </select>
+
+                    <button
+                        id="refresh-btn"
+                        class="admin-button"
+                        type="button"
+                    >
+                        Refresh
+                    </button>
+
+                </div>
+
+            </div>
+
+            <p
+                id="database-path"
+                class="admin-db"
+            ></p>
+
+            <div
+                id="admin-message"
+                class="admin-message"
+            ></div>
+
+            <div class="admin-table-wrap">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Text</th>
+                        <th>Original</th>
+                        <th>Score</th>
+                        <th>Corrected</th>
+                        <th>Status</th>
+                        <th>Source</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="corrections-body">
+                    </tbody>
+
+                </table>
+
+                <div
+                    id="empty-state"
+                    class="admin-empty hidden"
+                >
+                    No corrections found.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ------------------------------------------------
+             Promotion history
+        ------------------------------------------------- -->
+
+        <section class="model-admin-card">
+
+            <div class="model-card-heading">
+
+                <div>
+                    <span class="eyebrow">
+                        Audit
+                    </span>
+
+                    <h2>
+                        Promotion History
+                    </h2>
+                </div>
+
+            </div>
+
+            <div
+                id="history-list"
+                class="history-list"
+            >
+                No promotions recorded.
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
+
+<script src="/static/admin.js"></script>
+
+</body>
+</html>

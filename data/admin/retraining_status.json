@@ -1,0 +1,8 @@
+{
+  "state": "rolled_back",
+  "message": "Previous active model was restored. Restart Humor Bot to load it.",
+  "updated_at_utc": "2026-08-10T13:38:09+00:00",
+  "candidate_id": "candidate_20260810T125310Z_edc54825",
+  "promotion_id": "promotion_20260810T133747Z_candidate_20260810T125310Z_edc54825",
+  "restart_required": true
+}

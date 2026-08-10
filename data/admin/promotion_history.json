@@ -1,0 +1,12 @@
+[
+  {
+    "promotion_id": "promotion_20260810T133747Z_candidate_20260810T125310Z_edc54825",
+    "candidate_id": "candidate_20260810T125310Z_edc54825",
+    "promoted_at_utc": "2026-08-10T13:37:48+00:00",
+    "candidate_model": "D:\\Freelancer\\Ubuntu\\Humour\\humor_bot\\models\\candidates\\candidate_20260810T125310Z_edc54825\\model",
+    "previous_active_backup": "D:\\Freelancer\\Ubuntu\\Humour\\humor_bot\\models\\model_history\\pre_promotion_candidate_20260810T125310Z_edc54825_20260810T133747Z",
+    "rolled_back": true,
+    "rolled_back_at_utc": "2026-08-10T13:38:09+00:00",
+    "pre_rollback_current_backup": "D:\\Freelancer\\Ubuntu\\Humour\\humor_bot\\models\\model_history\\pre_rollback_current_20260810T133808Z"
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "milestone": "2.2A",
+  "run_id": "dataset_20260810T121345Z_8fe443ed",
+  "created_at_utc": "2026-08-10T12:13:45+00:00",
+  "purpose": "Frozen candidate-training dataset snapshot; no training or production promotion is performed.",
+  "database": "D:\\Freelancer\\Ubuntu\\Humour\\humor_bot\\data\\humor_feedback.db",
+  "counts": {
+    "base_training_rows": 7999,
+    "approved_corrections_seen": 1,
+    "approved_binary_corrections_included": 0,
+    "approved_corrections_excluded": 1,
+    "final_training_rows": 7999
+  },
+  "exclusions": {
+    "ambiguous_not_a_binary_training_label": 1
+  },
+  "protected_set": {
+    "validation": 1000,
+    "test": 1000,
+    "ood_unique_added": 112,
+    "protected_unique_total": 2112
+  },
+  "label_mapping": {
+    "Not Humorous": 0,
+    "Humorous": 1,
+    "Ambiguous / Uncertain": "excluded; abstention outcome, not a binary training class"
+  },
+  "output": {
+    "candidate_train": "D:\\Freelancer\\Ubuntu\\Humour\\humor_bot\\data\\retraining\\dataset_20260810T121345Z_8fe443ed\\candidate_train.csv",
+    "corrections_included": "D:\\Freelancer\\Ubuntu\\Humour\\humor_bot\\data\\retraining\\dataset_20260810T121345Z_8fe443ed\\corrections_included.csv",
+    "corrections_excluded": "D:\\Freelancer\\Ubuntu\\Humour\\humor_bot\\data\\retraining\\dataset_20260810T121345Z_8fe443ed\\corrections_excluded.csv",
+    "manifest": "D:\\Freelancer\\Ubuntu\\Humour\\humor_bot\\data\\retraining\\dataset_20260810T121345Z_8fe443ed\\dataset_manifest.json",
+    "sha256": "d6193b304e19e0784c9891fd1321afbbcad368b65cbde1fca140987e73f0039b"
+  },
+  "research_guards": [
+    "validation.csv protected",
+    "test.csv protected",
+    "data/ood CSV text protected",
+    "ambiguous corrections excluded",
+    "conflicting corrections excluded",
+    "original train.csv not modified"
+  ],
+  "ready_for_candidate_training": false
+}
