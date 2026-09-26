@@ -47,7 +47,7 @@ if getattr(sys, "frozen", False):
     ).resolve()
 else:
     RESOURCE_ROOT = SOURCE_ROOT
-    RUNTIME_ROOT = SOURCE_ROOT
+    RUNTIME_ROOT = Path(os.getenv("HUMOR_RUNTIME_ROOT", str(SOURCE_ROOT))).resolve()
 
 STATIC_DIR = RESOURCE_ROOT / "static"
 
