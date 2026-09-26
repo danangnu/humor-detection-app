@@ -29,7 +29,7 @@ class HumorClassifier:
     def __init__(self) -> None:
         configured = os.getenv("HUMOR_MODEL_PATH", "models/humor_transformer")
         self.local_model_path = (BASE_DIR / configured).resolve()
-        self.allow_bootstrap = os.getenv("ALLOW_BOOTSTRAP_MODEL", "true").lower() in {
+        self.allow_bootstrap = os.getenv("ALLOW_BOOTSTRAP_MODEL", "false").lower() in {
             "1", "true", "yes", "on"
         }
         self.bootstrap_model_id = os.getenv(
@@ -66,8 +66,8 @@ class HumorClassifier:
             raise RuntimeError(
                 "No local Humor Bot model found. Run training/train_transformer.py first."
             )
-        self.tokenizer = AutoTokenizer.from_pretrained(ref)
-        self.model = AutoModelForSequenceClassification.from_pretrained(ref)
+        self.tokenizer = AutoTokenizer.from_pretrained(ref, local_files_only=bool(os.getenv("DEPLOY_MODEL_DIR")), trust_remote_code=False)
+        self.model = AutoModelForSequenceClassification.from_pretrained(ref, local_files_only=bool(os.getenv("DEPLOY_MODEL_DIR")), trust_remote_code=False, use_safetensors=True)
         self.model.to(self.device).eval()
 
     def _humor_probability(self, logits: torch.Tensor) -> float:

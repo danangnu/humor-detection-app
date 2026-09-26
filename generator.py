@@ -19,7 +19,7 @@ def generate_reply(text: str, analysis: dict[str, Any]) -> tuple[str, str]:
     try:
         from google import genai
         model = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
-        client = genai.Client(api_key=key)
+        client = genai.Client(api_key=key, http_options={"timeout": 20000})
         prompt = f"""You are the response component of a humor-detection demo.
 The classifier has already returned:
 - score: {analysis['score']:.3f}

@@ -62,3 +62,7 @@ dist/
 *.bak
 *.backup
 ~$*
+# Hosted model packages and local test output
+*.zip
+*.zip.sha256
+.pytest_cache/

@@ -1,3 +1,9 @@
+# HUMOR Bot
+
+The current source includes transformer inference. For the hosted demonstration, follow [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md). The trained model is distributed separately; the repository alone is not a complete deployment.
+
+The local/desktop instructions below describe earlier delivery workflows.
+
 # Humor Bot — Milestone 1
 
 Standalone humor classification prototype.

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import threading
 import traceback
@@ -74,7 +75,7 @@ class ModelAdminService:
 
         self.models_dir = self.root / "models"
         self.active_model_dir = (
-            self.models_dir / "humor_transformer"
+            Path(os.getenv("DEPLOY_MODEL_DIR", str(self.models_dir / "humor_transformer")))
         )
         self.candidates_dir = (
             self.models_dir / "candidates"
